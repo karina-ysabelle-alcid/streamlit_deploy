@@ -1,27 +1,26 @@
 # Dependencies and Libraries
-from sklearn.utils import resample
+# from sklearn.utils import resample
 import streamlit as st
 import numpy as np
 import pandas as pd
-import sklearn as skl
-import matplotlib as plt
-import seaborn as sns
-from PIL import Image
+# import sklearn as skl
+# import matplotlib as plt
+# import seaborn as sns
+# from PIL import Image
 from pathlib import Path
 
 # Classifer Library
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
-from sklearn.metrics import classification_report
-from sklearn.metrics.pairwise import cosine_similarity
+# from sklearn.metrics import classification_report
 import category_encoders as ce
 
 # Cosine Similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
+st.set_page_config(layout="wide")
 
 # ============================================================
 # Result Function : Cosine Similarity Implementation
@@ -78,7 +77,7 @@ def predict(user_data):
     df['Current contraceptive method'] = df['Current contraceptive method'].replace(
         'Mucus/Billing/Ovulation', 'Ovulation', regex=True)
 
-    columns = ["Respondent's current age",
+    columns = ["Current age",
                'Age of respondent at 1st birth',
                'Age at first menstrual period',
                'Recent sexual activity',
@@ -102,7 +101,7 @@ def predict(user_data):
                'Smokes water pipe',
                'Snuff by mouth',
                'Chews betel quid with tobacco',
-               "Husband's desire for children",
+               "Husbands desire for children",
                'Exposure',
                'Unmet need',
                'Unmet need (definition 2)',
@@ -132,7 +131,7 @@ def predict(user_data):
         'Smokes water pipe',
         'Snuff by mouth',
         'Chews betel quid with tobacco',
-        "Husband's desire for children",
+        "Husbands desire for children",
         'Exposure',
         'Unmet need',
         'Unmet need (definition 2)',
@@ -524,7 +523,7 @@ def app():
             st.write("Your suggested contraceptive is...")
 
             user_df = pd.DataFrame({
-                "Respondent's current age": [current_age],
+                "Current age": [current_age],
                 'Age of respondent at 1st birth': [age_first_birth],
                 'Age at first menstrual period': [age_first_period],
                 'Recent sexual activity': [recent_sex_act],
@@ -548,7 +547,7 @@ def app():
                 'Smokes water pipe': [vice_3],
                 'Snuff by mouth': [vice_6],
                 'Chews betel quid with tobacco': [vice_9],
-                "Husband's desire for children": [husband_desire],
+                "Husbands desire for children": [husband_desire],
                 'Exposure': [swp_1],
                 'Unmet need': [unmet_need_1],
                 'Unmet need (definition 2)': [unmet_need_2],
@@ -563,7 +562,7 @@ def app():
             st.write("Your suggested contraceptive is...")
 
             user_df = pd.DataFrame({
-                "Respondent's current age": [current_age],
+                "Current age": [current_age],
                 'Age of respondent at 1st birth': [age_first_birth],
                 'Age at first menstrual period': [age_first_period],
                 'Recent sexual activity': [recent_sex_act],
@@ -587,7 +586,7 @@ def app():
                 'Smokes water pipe': [vice_3],
                 'Snuff by mouth': [vice_6],
                 'Chews betel quid with tobacco': [vice_9],
-                "Husband's desire for children": [husband_desire],
+                "Husbands desire for children": [husband_desire],
                 'Exposure': [swp_1],
                 'Unmet need': [unmet_need_1],
                 'Unmet need (definition 2)': [unmet_need_2],

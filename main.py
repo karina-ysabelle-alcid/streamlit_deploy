@@ -4,6 +4,8 @@ import dashboard
 import index
 import streamlit as st
 
+st.set_page_config(layout="wide")
+
 with st.sidebar:
     tabs = on_hover_tabs(tabName=['About', 'Recommender System', 'Dashboard'], iconName=[
                          'help', 'online_prediction', 'dashboard'],

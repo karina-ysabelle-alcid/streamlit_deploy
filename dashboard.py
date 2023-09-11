@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
 import altair as alt
 from pathlib import Path
 
@@ -73,7 +72,7 @@ def app():
     st.markdown("**Random Sample of the dataset**")
     st.write(data.sample(n=25))
 
-    features = ["Respondent's current age",
+    features = ["Current age",
                 "Age of respondent at 1st birth",
                 "Age at first menstrual period",
                 "Recent sexual activity",
@@ -98,7 +97,7 @@ def app():
                 "Smokes water pipe",
                 "Snuff by mouth",
                 "Chews betel quid with tobacco",
-                "Husband's desire for children",
+                "Husbands desire for children",
                 "Exposure",
                 "Unmet need",
                 "Unmet need (definition 2)",
@@ -107,7 +106,7 @@ def app():
 
     st.markdown("**Examine the dataset**")
     chosen_feature = st.selectbox(
-        "Select the feature of the dataset to examine", tuple(features))
+        "Select the feature of the dataset to examine", tuple(sorted(features)))
     col1, col2 = st.columns([1, 2])
 
     col1.write("Value Counts")
