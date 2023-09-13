@@ -1,4 +1,4 @@
-from st_on_hover_tabs import on_hover_tabs
+import streamlit_antd_components as sac
 import streamlit_app
 import dashboard
 import index
@@ -7,33 +7,21 @@ import streamlit as st
 st.set_page_config(layout="wide")
 
 with st.sidebar:
-    tabs = on_hover_tabs(tabName=['About', 'Recommender System', 'Dashboard'], iconName=[
-                         'help', 'online_prediction', 'dashboard'],
-                         styles={'navtab': {'background-color': '#F0F2F6',
-                                            'color': '#31333F',
-                                            'font-size': '18px',
-                                            'transition': '.3s',
-                                            'white-space': 'nowrap',
-                                            'text-transform': 'uppercase'},
-                                 'tabOptionsStyle': {':hover :hover': {'color': 'red',
-                                                                       'cursor': 'pointer'}},
-                                 'iconStyle': {'position': 'fixed',
-                                               'left': '7.5px',
-                                               'text-align': 'left'},
-                                 'tabStyle': {'list-style-type': 'none',
-                                              'margin-bottom': '30px',
-                                              'padding-left': '30px'}},
-                         key="1",
-                         default_choice=1)
+    selected = sac.menu([
+    sac.MenuItem('Home', icon='house'),
+    sac.MenuItem('Recommender System', icon='app'),
+    sac.MenuItem('Dashboard', icon='dashboard'),
+], index=0, format_func='title', size='middle', indent=24, open_index=None, open_all=True, return_index=False)
+
 pages = {
-    "About": index,
+    "Home": index,
     "Recommender System": streamlit_app,
     "Dashboard": dashboard,
 }
 
-if tabs == 'About':
-    pages['About'].app()
-elif tabs == "Recommender System":
-    pages["Recommender System"].app()
-elif tabs == "Dashboard":
+if selected == 'Home':
+    index.app()
+elif selected == "Recommender System":
+    streamlit_app.app()
+elif selected == "Dashboard":
     pages["Dashboard"].app()

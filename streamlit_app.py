@@ -26,7 +26,7 @@ def cosine_implementation(user_data):
     # m_path = Path(__file__).parent.parent
     # path = m_path.joinpath('dataset/clean_data.csv')
     # df = pd.read_csv(str(path))
-    df = pd.read_csv("clean_data.csv")
+    df = pd.read_csv("dataset/clean_data.csv")
 
     df = df.loc[df['Current contraceptive method'] != 'Not using']
     df.drop(columns=['Unnamed: 0'], axis=1)
