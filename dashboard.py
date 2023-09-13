@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 from pathlib import Path
+import seaborn as sns
 
 
 def read_data():
@@ -129,10 +130,12 @@ def app():
             label="Pie Chart (Type of Residence")
 
         if pairplot_button:
-            graph = 'pairplot'
-            img_path = f'https://raw.githubusercontent.com/RyanMNST/streamlit_deploy/main/graphs/{graph}.png'
-            st.markdown(
-                f"<img src='{img_path}' style='display: block; margin-left: auto; margin-right: auto; width: 100%;'>", unsafe_allow_html=True)
+            fig = sns.pairplot(data)
+            st.pyplot(fig)
+            # graph = 'pairplot'
+            # img_path = f'https://raw.githubusercontent.com/RyanMNST/streamlit_deploy/main/graphs/{graph}.png'
+            # st.markdown(
+            #     f"<img src='{img_path}' style='display: block; margin-left: auto; margin-right: auto; width: 100%;'>", unsafe_allow_html=True)
 
         elif heatmap_button:
             graph = 'heatmap'

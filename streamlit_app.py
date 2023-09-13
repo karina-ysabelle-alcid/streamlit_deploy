@@ -20,8 +20,6 @@ import category_encoders as ce
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-st.set_page_config(layout="wide")
-
 # ============================================================
 # Result Function : Cosine Similarity Implementation
 def cosine_implementation(user_data):
@@ -60,7 +58,6 @@ def cosine_implementation(user_data):
     user_data = vectorizer.transform(user_data).toarray()
     index = np.argmax(cosine_similarity(trsfm, user_data))
     return df.iloc[index]['Current contraceptive method']
-
 
 # ============================================================
 # Result Function : Random Forest Implementation
