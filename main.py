@@ -4,8 +4,6 @@ import dashboard
 import index
 import streamlit as st
 
-st.set_page_config(layout="wide")
-
 with st.sidebar:
     selected = sac.menu([
     sac.MenuItem('Home', icon='house'),
